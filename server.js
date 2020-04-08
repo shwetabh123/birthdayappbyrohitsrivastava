@@ -48,7 +48,7 @@ app.set('view engine', 'ejs')
 
 var router = express.Router();
 
-router.use(express.static(__dirname+'/public'));
+//router.use(express.static(__dirname+'/public'));
 
 
 
@@ -118,7 +118,7 @@ router.post('/upload', upload,function(req, res, next) {
 
     router.get('/upload',function(req, res, next) {
 
-        
+
         imageData.exec(function(err,data){
           if(err) throw err;
       res.render('upload-file', { title: 'Upload File', records:data, success:'' });
