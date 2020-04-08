@@ -53,12 +53,15 @@ var router = express.Router();
 
 
 
-app.use(express.static(__dirname+'/public'));
+//app.use(express.static(__dirname+'/public'));
 
 
 app.use(bodyparser.json());
 
-app.use(express.static(__dirname+'/public'));
+//app.use(express.static(__dirname+'/public'));
+
+app.use(express.static(__dirname+'/views'));
+
 
 app.use('/node_modules',express.static(__dirname+'/node_modules'));
 
