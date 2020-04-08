@@ -58,7 +58,7 @@ app.use('/node_modules',express.static(__dirname+'/node_modules'));
 
 app.get('/',(req,res )=>{
 
-res.send("Welcome to Shwetabh Portal");
+res.send(__dirname+ '/index.html');
 
 })
 

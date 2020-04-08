@@ -1,5 +1,6 @@
 <!doctype html>
 <html  ng-app="address">
+
 <head>
   <meta charset="utf-8">
   <title>Welcome to Srivastava Family </title>
@@ -114,12 +115,30 @@ button {
 
 
 
+<form action="/uploadFile" enctype="multipart-form-data" method="POST">
+<input  type="file" name="myFile">
+<input type="submit" values="Upload your file">
+</form>
 
 
 
+<form action="/uploadFile" enctype="multipart-form-data" method="POST">
+  <input  type="file" name="myFiles" multiple>
+  <input type="submit" values="Upload your files">
+  
+  
+  </form>
+  
 
 
-
+  <form action="/uploadphoto" enctype="multipart-form-data" method="POST">
+    <input  type="file" name="myImage"   accept="image/*">
+    
+    <input type="submit" values="Upload Photo">
+  
+    >
+    
+    </form>
 
 
 
