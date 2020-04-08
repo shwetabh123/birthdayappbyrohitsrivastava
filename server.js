@@ -12,8 +12,6 @@ var con =require('./connection');
 var model =require('./model');
 
 
-var uploadModel =require('./upload');
-
 
 var bodyparser =require('body-parser');
 
@@ -40,104 +38,19 @@ var Add =mongoose.model ('add',model,'address');
 
 var app =express();
 
-// view engine setup
-
-app.set('views', path.join(__dirname, 'views'));
-
-app.set('view engine', 'ejs')
-
-var router = express.Router();
-
-//router.use(express.static(__dirname+'/public'));
 
 
-
-
-//app.use(express.static(__dirname+'/public'));
+app.use(express.static(__dirname+'/public'));
 
 
 app.use(bodyparser.json());
 
-//app.use(express.static(__dirname+'/public'));
+app.use(express.static(__dirname+'/public'));
 
-app.use(express.static(__dirname+'/views'));
+
 
 
 app.use('/node_modules',express.static(__dirname+'/node_modules'));
-
-
-
-
-
-
-
-
-if (typeof localStorage === "undefined" || localStorage === null) {
-    const LocalStorage = require('node-localstorage').LocalStorage;
-    localStorage = new LocalStorage('./scratch');
-  }
-
-  var Storage= multer.diskStorage({
-    destination:"./public/uploads",
-    filename:(req,file,cb)=>{
-      cb(null,file.fieldname+"_"+Date.now()+path.extname(file.originalname));
-    }
-  });
-  
-  var upload = multer({
-    storage:Storage
-  }).single('file');
-  
-
-
-
-
-
-/* GET home page. */
-router.post('/upload', upload,function(req, res, next) {
-    var imageFile=req.file.filename;
-
-   var success =req.file.filename+ " uploaded successfully";
-  
-   var imageDetails= new uploadModel({
-    imagename:imageFile
-   });
-   imageDetails.save(function(err,doc){
-  if(err) throw err;
-  
-  imageData.exec(function(err,data){
-  if(err) throw err;
-  res.render('upload-file', { title: 'Upload File', records:data,   success:success });
-  });
-  
-   });
-  
-    });
-
-
-
-
-
-
-    router.get('/upload',function(req, res, next) {
-
-
-        imageData.exec(function(err,data){
-          if(err) throw err;
-      res.render('upload-file', { title: 'Upload File', records:data, success:'' });
-        });
-      });
-
-
-
-
-
-
-
-
-
-
-
 
 
 

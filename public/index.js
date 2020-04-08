@@ -12,7 +12,9 @@ function addressBook($http)
 
     var vm=this;
     vm.Title = "Address book";
+
     vm.AddressBookInfo = [];
+    
     vm.GetAddress = getAddress;
     vm.addAddress=addAddress;
     vm.editAddress=editAddress;
