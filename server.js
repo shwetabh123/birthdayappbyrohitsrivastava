@@ -12,7 +12,6 @@ var con =require('./connection');
 var model =require('./model');
 
 
-
 var bodyparser =require('body-parser');
 
 // const dotenv=require("dotenv");
