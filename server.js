@@ -54,6 +54,21 @@ app.use('/node_modules',express.static(__dirname+'/node_modules'));
 
 
 
+
+
+app.get('/',(req,res )=>{
+
+res.send("Welcome to Shwetabh Portal");
+
+})
+
+
+
+
+
+
+
+
 app.get('/getAddress',function(req,res ){
 
     Add.find(function(err,docs){
