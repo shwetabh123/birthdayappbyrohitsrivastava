@@ -1,0 +1,318 @@
+<!doctype html>
+<html  ng-app="address">
+<head>
+  <meta charset="utf-8">
+  <title>Welcome to Srivastava Family </title>
+  
+  <link rel="stylesheet" href ="/node_modules/bootstrap/dist/css/bootstrap.css"/>
+
+  <script src="/node_modules/angular/angular.js"></script>
+  <script src="index.js"></script>
+
+
+</head>
+
+<style>
+	.table 
+
+{
+    text-align:center;
+  border:1px solid black;
+  font-size:30 px;
+  border:2px solid #ADFF2F;
+  background-color: #FF1493;
+  padding: 10px;
+  font-family: sans-serif;
+  border:2px solid #ADFF2F;
+  margin:0 auto;
+
+
+}
+td
+
+{
+    text-align:center;
+
+  border:1px solid black;
+  font-size:30 px;
+  border:2px solid #ADFF2F;
+  background-color: #FF1493;
+  padding: 10px;
+  font-family: sans-serif;
+  border:2px solid #ADFF2F;
+  margin:0 auto;
+
+
+}
+
+th
+{
+    text-align:center;
+  border:1px solid black;
+  font-size:30 px;
+  border:2px solid #ADFF2F;
+  background-color: #0000ff;
+  padding: 10px;
+  font-family: sans-serif;
+  margin:0 auto;
+
+
+}
+
+
+input{
+
+background-color: #FFFF00; /* Yellow */
+color:solid black;
+margin-top: 10px;
+}
+
+placeholder{
+
+background-color: #FF1493;
+color:solid black;
+margin-top: 10px;
+}
+body { 
+    
+    background-color: green;
+
+    text-align:center;
+
+} 
+
+button {
+  background-color: #FFFF00; /* Yellow */
+  border: 1px solid black;
+  color: #000000;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 26px;
+}
+
+</style>
+
+
+<body>
+
+
+  <div class="container">
+    <div class="row">
+            <% if(success !=''){%>
+                <div class="alert alert-success">
+                  <strong>Success!</strong> <%= success %>
+                </div>
+                <% } %>
+
+        <div id="uploadfile" style="margin-top:50px" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <div class="panel-title">Upload File</div>
+                     </div>  
+                <div class="panel-body" >
+                    <form action="/upload" id="EmployeeForm" class="form-horizontal" method="post"  role="form" enctype="multipart/form-data">
+                       
+                            
+                        <div class="form-group">
+                            <label for="file" class="col-md-3 control-label">Upload File</label>
+                            <div class="col-md-9">
+                                <input type="file" class="form-control" name="file" required>
+                            </div>
+                        </div>
+                        
+
+                        <div class="form-group">
+                            <!-- Button -->                                        
+                            <div class="col-md-offset-3 col-md-9">
+                            <input type="submit" name="submit" value="Upload" class="btn btn-primary">   
+                            </div>
+                        </div>
+                        
+                        
+                        
+                        
+                        
+                    </form>
+                 </div>
+            </div>
+
+       
+       
+        
+ </div> 
+    </div>
+  </div>
+
+
+  
+  <div class="container">
+      <div class="row">
+          <%if (records.length >0){ %>
+            <% records.forEach(function(row){ %>
+     <div class="col-md-4">
+       <img src="./uploads/<%= row.imagename %>" alt="image" style="width:100%;margin:5px auto;">
+     </div>
+     <% }) }%>
+        </div></div>
+    
+
+  <div class="container"  ng-controller="addressctr as vm">
+
+
+    <header>
+
+
+<h1  style="color:red;">Family Members</h1>
+
+
+<img width="350"src="https://i.ytimg.com/vi/pG25XhhEMAo/maxresdefault.jpg">
+<img width="350"src="https://scontent.fblr11-1.fna.fbcdn.net/v/t1.0-9/10686808_834658326574227_6328530574365614719_n.jpg?_nc_cat=108&_nc_sid=e007fa&_nc_ohc=-aTDYXM8xykAX9tTO8X&_nc_ht=scontent.fblr11-1.fna&oh=ca2585d91d04921bd8d7cea521e823aa&oe=5EA6A98D">
+
+
+
+
+
+
+
+
+
+
+
+
+<table width="4000"   class="table table-bordered">
+
+<thead>
+
+    <tr>
+
+        <th width="500">First Name</th>
+        <th width="500" >Last Name</th>
+        <th width="500" >DOB</th>
+        <th width="500">Anniversay Date</th>
+        <th width="500">Address</th>
+        <th width="500">Phone</th>
+        <th width="500">Email</th>
+        <th width="500">Action</th>
+     </tr >
+</thead>
+
+
+
+
+<tfoot>
+
+<tr>
+
+<td>
+  <input size="500" class="form-control"  ng-model="vm.address.FirstName"     type ="text"  placeholder="First Name"/>
+
+
+</td>
+<td>
+  <input size="500" class="form-control"  ng-model="vm.address.LastName" type ="text" placeholder="Last Name"/>
+
+
+</td>
+<td>
+  <input size="500" class="form-control" ng-model="vm.address.DOB"  type ="date" placeholder="DOB "/>
+
+
+</td>
+
+
+
+<td>
+  <input size="500" class="form-control" ng-model="vm.address.AnniversayDate"  type ="date" placeholder="Anniversay Date"/>
+
+
+</td>
+<td>
+  <input size="500" class="form-control" ng-model="vm.address.Address"  type ="text" placeholder="Address"/>
+
+
+</td>
+
+<td>
+  <input size="500" class="form-control" ng-model="vm.address.Phone"  type ="text"placeholder="Phone"/>
+
+
+</td>
+<td>
+  <input size="500" class="form-control" ng-model="vm.address.Email"  type ="text"placeholder="Email"/>
+
+
+</td>
+
+<td>
+
+  <input style="height:40px; width:120px"  type="button"  class="button"  value ="Add"  ng-disabled="vm.address._id"  ng-click="vm.addAddress()"/>
+  <input style="height:40px; width:120px"  type="button"  class="button"  value ="Update"  ng-disabled="!vm.address._id" ng-click="vm.updateAddress(vm.address._id)"/>
+
+
+</td>
+
+
+</tr>
+
+<tr   ng-repeat="address in vm.AddressBookInfo">
+
+
+
+
+<td  width="500" >{{address.FirstName}}</td>
+
+<td  width="500">{{address.LastName}}</td>
+
+<td  width="500">{{address.DOB}}</td>
+
+<td  width="500">{{address.AnniversayDate}}</td>
+
+<td  width="500">{{address.Address}}</td>
+
+<td  width="500">{{address.Phone}}</td>
+
+<td  width="500">{{address.Email}}</td>
+
+<td>
+
+
+  <input style="height:40px; width:120px"  type="button" class="button"  value ="Edit"  ng-click="vm.editAddress(address._id)"   />
+  <input style="height:40px; width:120px" type="button" class="button"  value ="Delete" ng-click="vm.deleteAddress(address._id) "  />
+
+
+</td>
+
+
+
+</tr>
+
+
+
+</tfoot>
+
+</table>
+
+ 
+
+
+
+ 
+    
+    
+    
+
+
+  </div>
+
+
+
+
+
+
+
+
+
+</body>
+</html>
