@@ -4,13 +4,20 @@ const multer=require('multer');
 
 const path=require('path');
 
+const fs=require('fs');
 
 var mongoose =require('mongoose');
+
+var mongodb=require('mongodb');
+
+
 
 var con =require('./connection');
 
 var model =require('./model');
+const PORT = process.env.PORT || config.httpPort;
 
+   
 
 var bodyparser =require('body-parser');
 
@@ -47,12 +54,66 @@ app.use(bodyparser.json());
 app.use(express.static(__dirname+'/public'));
 
 
-
-
 app.use('/node_modules',express.static(__dirname+'/node_modules'));
 
 
 
+
+
+
+app.use(bodyparser.urlencoded({extended:true}))
+
+
+var storage=multer.diskStorage({
+destination:function(req,file,cb){
+
+    cb(null,'uploads')
+},
+filename:function(req,file,cb){
+
+
+    cb(null,file,filename+ '-'+Date.now()+  path.extname(file.originalname));
+}
+
+
+
+
+
+})
+
+
+
+
+var upload=multer({
+
+    storage:storage
+})
+
+//configuring mongodb
+const MongoClient=mongodb.MongoClient;
+const url='mongodb+srv://test:test@address-kvpmm.mongodb.net/test/address';
+
+
+
+MongoClient.connect(url,{
+    useUnifiedTopology:true, useNewUrlParser :true
+
+
+},(err,client)=>{
+
+    if(err) return console.log(err);
+
+    db=client.db('address');
+    
+    app.listen(PORT, function(){
+
+
+        console.log('server running on port:'+PORT);
+  
+    })
+
+
+})
 
 
 
@@ -64,7 +125,37 @@ res.send(__dirname+ '/index.html');
 
 
 
+app.post("/uploadphoto",  upload.single('myImage'),  (req,re)=>{
 
+var img=fs.readFileSync(req.file.path);
+
+var encode_image=img.toString('base64');
+
+var finalImg={
+
+    contentType:req.file.mimetype,
+    path:req.file.path,
+    image:new Buffer(encode_image,'base64')
+
+};
+
+//insert image to database
+db.collection('image').insertone(finalImg,(err,result)=>{
+
+    console.log(result);
+    if(err)
+  return console.log(err);
+  console.log("saved to db");
+
+  res.contentType(finalImg.contentType);
+
+
+  res.send(finalImg.image);
+
+
+})
+
+})
 
 
 
@@ -208,14 +299,14 @@ console.log(req.body);
 
 //ON HEROKU
 
-  const PORT = process.env.PORT || config.httpPort;
+//   const PORT = process.env.PORT || config.httpPort;
 
-   app.listen(PORT, function(){
+//    app.listen(PORT, function(){
 
 
-      console.log('server running on port:'+PORT);
+//       console.log('server running on port:'+PORT);
 
-  });
+//   });
 
 
 
