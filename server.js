@@ -39,6 +39,8 @@ var Add =mongoose.model ('add',model,'address');
 
 
 var app =express();
+// Set EJS as templating engine 
+app.set('view engine', 'ejs'); 
 
 var router = express.Router();
 
