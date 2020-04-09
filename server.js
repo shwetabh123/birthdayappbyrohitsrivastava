@@ -78,7 +78,9 @@ filename:function(req,file,cb){
 
  //   cb(null,file.filename + '-'+ Date.now()+  path.extname(file.originalname));
 
-    cb(null, Date.now() + file.originalname);
+   // cb(null, Date.now() + file.originalname);
+
+    cb(null, new Date().toISOString() + file.originalname);
 }
 
 
