@@ -15,6 +15,7 @@ var mongodb=require('mongodb');
 var con =require('./connection');
 
 var model =require('./model');
+
 const PORT = process.env.PORT || config.httpPort;
 
    
@@ -126,7 +127,7 @@ res.send(__dirname+ '/index.html');
 
 
 
-app.post("/uploadphoto",  upload.single('myImage'),  (req,re)=>{
+app.post('/uploadphoto',  upload.single('myImage'),  (req,re)=>{
 
 var img=fs.readFileSync(req.file.path);
 
