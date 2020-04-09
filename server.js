@@ -89,11 +89,11 @@ var upload=multer({
 
 //configuring mongodb
 const MongoClient=mongodb.MongoClient;
-const url='mongodb+srv://test:test@image-kvpmm.mongodb.net/test/image';
+const con='mongodb+srv://test:test@image-kvpmm.mongodb.net/test/image';
 
 
 
-MongoClient.connect(url,{
+MongoClient.connect(con,{
     useUnifiedTopology:true, useNewUrlParser :true
 
 
@@ -135,8 +135,10 @@ const file =req.file;
 //var img=fs.readFileSync(req.file.path);
 
 console.log(req.file);
-    const absolutePath = path.join(__dirname, req.file.path);
-    const img = fs.readFileSync(absolutePath, "utf-8");
+
+const absolutePath = path.join(__dirname, req.file.path);
+
+const img = fs.readFileSync(absolutePath, "utf-8");
 
 var encode_image=img.toString('base64');
 
@@ -192,6 +194,8 @@ app.get('/getAddress',function(req,res ){
 
 
 });
+
+
 
 app.get('/getOne/:id',function(req,res){
 
@@ -314,14 +318,14 @@ console.log(req.body);
 
 //ON HEROKU
 
-//   const PORT = process.env.PORT || config.httpPort;
+   const PORT = process.env.PORT || config.httpPort;
 
-//    app.listen(PORT, function(){
+    app.listen(PORT, function(){
 
 
-//       console.log('server running on port:'+PORT);
+       console.log('server running on port:'+PORT);
 
-//   });
+   });
 
 
 
