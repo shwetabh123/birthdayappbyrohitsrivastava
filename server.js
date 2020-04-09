@@ -67,6 +67,8 @@ app.use(bodyparser.urlencoded({extended:true}))
 
 
 var storage = multer.diskStorage({
+
+
 destination:function(req,file,cb){
 
   //  cb(null,'./uploads/')
@@ -74,7 +76,7 @@ destination:function(req,file,cb){
  //   cb(null,'uploads')
 
 
-    cb(null,'D:/ProtractorTypescriptCucumberworkspace/MeanStack/build/uploads');
+    cb(null,'D:/ProtractorTypescriptCucumberworkspace/MeanStack/build/uploads/');
 
 
 //   cb(null, path.join(__dirname+'/uploads/'));
