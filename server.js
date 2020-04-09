@@ -129,6 +129,9 @@ res.send(__dirname+ '/index.html');
 
 app.post('/uploadphoto',  upload.single('myImage'),  (req,re)=>{
 
+const file =req.file;
+
+
 var img=fs.readFileSync(req.file.path);
 
 var encode_image=img.toString('base64');
