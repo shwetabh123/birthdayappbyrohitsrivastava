@@ -47,13 +47,13 @@ var app =express();
 
 
 
-app.use(express.static(__dirname+'/public'));
+//app.use(express.static(__dirname+'/public'));
 
 
 app.use(bodyparser.json());
 
-app.use(express.static(__dirname+'/public'));
-
+//app.use(express.static(__dirname+'/public'));
+app.use(express.static(__dirname));
 
 app.use('/node_modules',express.static(__dirname+'/node_modules'));
 
@@ -68,7 +68,10 @@ app.use(bodyparser.urlencoded({extended:true}))
 var storage = multer.diskStorage({
 destination:function(req,file,cb){
 
-    cb(null,'./uploads/')
+//    cb(null,'./uploads/')
+
+    cb(null, path.join(__dirname, '/uploads/'));
+
 },
 filename:function(req,file,cb){
 
