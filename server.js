@@ -153,7 +153,7 @@ res.sendFile(__dirname+ '/index.html');
 
 
 
-app.post('/uploadphoto',  upload.single('myImage'),  (req,res)=>{
+app.post("/uploadphoto",  upload.single('myImage'),  (req,res)=>{
 
 const file =req.file;
 
