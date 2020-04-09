@@ -71,9 +71,9 @@ destination:function(req,file,cb){
 
 //    cb(null,'./uploads/')
 
- //   cb(null, path.join(__dirname, '/uploads/'));
+    cb(null, path.join(__dirname+'/uploads/'));
 
- cb(null, __dirname);
+ //cb(null, __dirname);
 
  //cb(null, path.join(__dirname, '../uploads/'))
 
@@ -153,7 +153,7 @@ const file =req.file;
 
 console.log(req.file);
 
-const absolutePath = path.join(__dirname, req.file.path);
+const absolutePath = path.join(__dirname+'/uploads/', req.file.path);
 
 const img = fs.readFileSync(absolutePath, "utf-8");
 
