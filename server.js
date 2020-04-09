@@ -87,15 +87,15 @@ destination:function(req,file,cb){
 filename:function(req,file,cb){
 
 
-   cb(null,file.fieldname + '-'+ Date.now()+  path.extname(file.originalname));
+   //cb(null,file.fieldname + '-'+ Date.now()+  path.extname(file.originalname));
 
    // cb(null, Date.now() + file.originalname);
 
   //  cb(null, new Date().toISOString() + file.originalname);
 
-
+  cb(null, Date.now() + file.originalname)
     
- //   cb(null,file.originalname);
+  //cb(null,file.originalname);
     
 }
 
