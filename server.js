@@ -52,8 +52,9 @@ var app =express();
 
 app.use(bodyparser.json());
 
-//app.use(express.static(__dirname+'/public'));
-app.use(express.static(__dirname));
+app.use(express.static(__dirname+'/public'));
+
+//app.use(express.static(__dirname));
 
 app.use('/node_modules',express.static(__dirname+'/node_modules'));
 
@@ -70,7 +71,11 @@ destination:function(req,file,cb){
 
 //    cb(null,'./uploads/')
 
-    cb(null, path.join(__dirname, '/uploads/'));
+ //   cb(null, path.join(__dirname, '/uploads/'));
+
+ cb(null, __dirname);
+
+ //cb(null, path.join(__dirname, '../uploads/'))
 
 },
 filename:function(req,file,cb){
