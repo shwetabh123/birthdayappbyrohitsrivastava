@@ -76,9 +76,6 @@ filename:function(req,file,cb){
 }
 
 
-
-
-
 })
 
 
@@ -103,7 +100,7 @@ MongoClient.connect(url,{
 
     if(err) return console.log(err);
 
-    db=client.db('address');
+    db=client.db('test');
     
     app.listen(PORT, function(){
 
@@ -122,6 +119,10 @@ app.get('/',(req,res )=>{
 res.send(__dirname+ '/index.html');
 
 })
+
+
+
+
 
 
 
@@ -156,6 +157,12 @@ db.collection('image').insertone(finalImg,(err,result)=>{
 })
 
 })
+
+
+
+
+
+
 
 
 
