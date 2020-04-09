@@ -89,7 +89,7 @@ var upload=multer({
 
 //configuring mongodb
 const MongoClient=mongodb.MongoClient;
-const url='mongodb+srv://test:test@address-kvpmm.mongodb.net/test/address';
+const url='mongodb+srv://test:test@image-kvpmm.mongodb.net/test/image';
 
 
 
