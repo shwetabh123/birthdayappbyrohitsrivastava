@@ -69,7 +69,9 @@ app.use(bodyparser.urlencoded({extended:true}))
 var storage = multer.diskStorage({
 destination:function(req,file,cb){
 
-    cb(null,'./uploads/')
+  //  cb(null,'./uploads/')
+
+    cb(null,'uploads')
 
 //   cb(null, path.join(__dirname+'/uploads/'));
 
@@ -158,10 +160,12 @@ console.log(req.file);
 
 //const absolutePath = path.join('./uploads/', req.file.path);
 
-const absolutePath = path.join( req.file.path);
+// const absolutePath = path.join( req.file.path);
 
 
-const img = fs.readFileSync(absolutePath, "utf-8");
+// const img = fs.readFileSync(absolutePath, "utf-8");
+
+var img=fs.readFileSync(req.file.path);
 
 var encode_image=img.toString('base64');
 
