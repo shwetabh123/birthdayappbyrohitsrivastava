@@ -318,7 +318,7 @@ console.log(req.body);
 
 //ON HEROKU
 
-   const PORT = process.env.PORT || config.httpPort;
+  // const PORT = process.env.PORT || config.httpPort;
 
     app.listen(PORT, function(){
 
