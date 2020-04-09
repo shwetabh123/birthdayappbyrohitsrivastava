@@ -52,9 +52,9 @@ var app =express();
 
 app.use(bodyparser.json());
 
-app.use(express.static(__dirname+'/uploads'));
+//app.use(express.static(__dirname+'/uploads'));
 
-//app.use(express.static(__dirname));
+app.use(express.static(__dirname));
 
 app.use('/node_modules',express.static(__dirname+'/node_modules'));
 
