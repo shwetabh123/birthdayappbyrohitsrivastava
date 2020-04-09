@@ -73,6 +73,10 @@ destination:function(req,file,cb){
 
     cb(null,'uploads')
 
+
+    cb(null,'D:/ProtractorTypescriptCucumberworkspace/MeanStack/build/uploads');
+
+
 //   cb(null, path.join(__dirname+'/uploads/'));
 
  //cb(null, __dirname);
@@ -83,7 +87,7 @@ destination:function(req,file,cb){
 filename:function(req,file,cb){
 
 
- //   cb(null,file.filename + '-'+ Date.now()+  path.extname(file.originalname));
+   cb(null,file.fieldname + '-'+ Date.now()+  path.extname(file.originalname));
 
    // cb(null, Date.now() + file.originalname);
 
@@ -91,7 +95,7 @@ filename:function(req,file,cb){
 
 
     
-    cb(null,file.originalname);
+ //   cb(null,file.originalname);
     
 }
 
