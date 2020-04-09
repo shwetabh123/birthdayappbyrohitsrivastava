@@ -12,7 +12,7 @@ var mongodb=require('mongodb');
 
 
 
-var con =require('./connection');
+var con1 =require('./connection');
 
 var model =require('./model');
 
