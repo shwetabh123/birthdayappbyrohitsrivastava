@@ -64,10 +64,10 @@ app.use('/node_modules',express.static(__dirname+'/node_modules'));
 app.use(bodyparser.urlencoded({extended:true}))
 
 
-var storage=multer.diskStorage({
+var storage = multer.diskStorage({
 destination:function(req,file,cb){
 
-    cb(null,'uploads')
+    cb(null,'/uploads')
 },
 filename:function(req,file,cb){
 
