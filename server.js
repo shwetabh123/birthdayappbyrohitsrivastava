@@ -52,7 +52,7 @@ var app =express();
 
 app.use(bodyparser.json());
 
-app.use(express.static(__dirname+'/public'));
+//app.use(express.static(__dirname+'/public'));
 
 //app.use(express.static(__dirname));
 
@@ -153,7 +153,10 @@ const file =req.file;
 
 console.log(req.file);
 
-const absolutePath = path.join('./uploads/', req.file.path);
+//const absolutePath = path.join('./uploads/', req.file.path);
+
+const absolutePath = path.join( req.file.path);
+
 
 const img = fs.readFileSync(absolutePath, "utf-8");
 
