@@ -117,7 +117,7 @@ MongoClient.connect(url,{
 
 app.get('/',(req,res )=>{
 
-res.send(__dirname+ '/index.html');
+res.sendFile(__dirname+ '/index.html');
 
 })
 
