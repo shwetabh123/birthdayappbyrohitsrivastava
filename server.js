@@ -132,7 +132,11 @@ app.post('/uploadphoto',  upload.single('myImage'),  (req,re)=>{
 const file =req.file;
 
 
-var img=fs.readFileSync(req.file.path);
+//var img=fs.readFileSync(req.file.path);
+
+console.log(req.file);
+    const absolutePath = path.join(__dirname, req.file.path);
+    const img = fs.readFileSync(absolutePath, "utf-8");
 
 var encode_image=img.toString('base64');
 
