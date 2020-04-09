@@ -122,7 +122,7 @@ MongoClient.connect(con,{
 
 app.get('/',(req,res )=>{
 
-res.sendFile(__dirname+ '/index.html');
+res.sendFile(__dirname+ '/public/index.html');
 
 })
 
